@@ -1,0 +1,37 @@
+{
+  "name": "Wheatbelt Audio Companion",
+  "short_name": "Wheatbelt",
+  "description": "Location-triggered audio commentary for Western Australian Wheatbelt road trips. Offline-first.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0a09",
+  "theme_color": "#1c1917",
+  "categories": ["travel", "navigation", "entertainment"],
+  "icons": [
+    { "src": "/icon-96.png", "sizes": "96x96", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-256.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Now Playing",
+      "short_name": "Playing",
+      "url": "/?tab=now-playing"
+    },
+    {
+      "name": "Test Mode",
+      "short_name": "Test",
+      "url": "/?tab=test-mode"
+    },
+    {
+      "name": "Trips",
+      "short_name": "Trips",
+      "url": "/?tab=trips"
+    }
+  ]
+}
