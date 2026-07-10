@@ -108,14 +108,24 @@ export interface SlkRangeTrigger {
 
 /**
  * Geofence trigger: fire when the vehicle is within `radiusM` metres of
- * (lat, lon). Used for off-SLK POIs like lookouts, historical markers,
- * and town side-trips.
+ * (lat, lon). Used for all POIs — towns, lookouts, historical markers,
+ * side-trips. This is the primary trigger type.
+ *
+ * Optional directional filter:
+ *   - "arriving"  — only fire when GPS heading is toward the POI
+ *   - "departing" — only fire when GPS heading is away from the POI
+ *   - undefined   — fire regardless of direction (default, most POIs)
+ *
+ * Direction is computed from the EKF's velocity vector vs the bearing
+ * from current position to POI centre. Pure trigonometry — no map data
+ * required.
  */
 export interface GeofenceTrigger {
   type: "geofence";
   lat: number;
   lon: number;
   radiusM: number;
+  direction?: "arriving" | "departing";
 }
 
 /** Union type for trigger specs. */
@@ -130,19 +140,33 @@ export type TriggerEvent =
 export interface VehiclePosition {
   /** Source of the position. */
   source: "gps" | "test";
-  /** Road the vehicle is currently on, if matched. */
+  /** Road the vehicle is currently on, if matched (only for SLK triggers). */
   roadId?: RoadId;
   /** SLK position along the road, if matched. */
   slk?: number;
-  /** Direction of travel along the road. */
+  /** Direction of travel along the road (for SLK triggers). */
   direction?: SlkDirection;
   /** Raw lat/lon. */
   lat?: number;
   lon?: number;
-  /** Speed in km/h (for EKF tuning context). */
+  /** Speed in km/h (for EKF tuning context + UI display). */
   speedKmh?: number;
+  /** GPS heading in degrees (0 = north, 90 = east). NaN if stationary. */
+  headingDeg?: number;
   /** ISO timestamp of the fix. */
   timestamp: number;
+}
+
+/** Per-journey playback state — tracks which clips have been heard. */
+export interface JourneyState {
+  /** Unique journey id (timestamp-based). */
+  id: string;
+  /** Trip id this journey is on. */
+  tripId: string;
+  /** When the journey started (ms since epoch). */
+  startedAt: number;
+  /** Clip ids that have been played to completion or explicitly skipped. */
+  playedClipIds: string[];
 }
 
 /** Result of a single trigger evaluation pass. */

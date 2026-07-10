@@ -53,7 +53,35 @@ export function haversineMetres(
   return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-/** SLK-range matcher — carriageway-aware. */
+/**
+ * Initial bearing from point 1 to point 2, in degrees (0 = north, 90 = east).
+ * Returns 0–360.
+ */
+export function bearingDeg(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number,
+): number {
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const toDeg = (rad: number) => (rad * 180) / Math.PI;
+  const φ1 = toRad(lat1);
+  const φ2 = toRad(lat2);
+  const Δλ = toRad(lon2 - lon1);
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x =
+    Math.cos(φ1) * Math.sin(φ2) -
+    Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+  return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+/** Angular difference between two bearings, in degrees (0–180). */
+export function bearingDiff(b1: number, b2: number): number {
+  const diff = Math.abs(b1 - b2) % 360;
+  return diff > 180 ? 360 - diff : diff;
+}
+
+/** SLK-range matcher — carriageway-aware. Used only for corridor callouts. */
 const matchSlkRange: Matcher = (trigger, position) => {
   if (trigger.type !== "slk-range") return false;
   const t = trigger as SlkRangeTrigger;
@@ -76,14 +104,38 @@ const matchSlkRange: Matcher = (trigger, position) => {
   return slk >= lo && slk <= hi;
 };
 
-/** Geofence matcher — works from raw lat/lon, no SLK needed. */
+/**
+ * Geofence matcher — works from raw lat/lon, no SLK needed.
+ * Primary trigger type for all POIs.
+ *
+ * Directional filter (if set):
+ *   - "arriving"  — fires only when GPS heading is toward the POI
+ *                   (bearing to POI within 90° of GPS heading)
+ *   - "departing" — fires only when GPS heading is away from the POI
+ *                   (bearing to POI more than 90° off GPS heading)
+ *
+ * Direction check is skipped if:
+ *   - No direction field is set on the trigger (most POIs)
+ *   - GPS heading is NaN (stationary — let it fire, user can skip if unwanted)
+ */
 const matchGeofence: Matcher = (trigger, position) => {
   if (trigger.type !== "geofence") return false;
   const t = trigger as GeofenceTrigger;
   if (position.lat == null || position.lon == null) return false;
 
+  // Distance check
   const dist = haversineMetres(position.lat, position.lon, t.lat, t.lon);
-  return dist <= t.radiusM;
+  if (dist > t.radiusM) return false;
+
+  // Directional filter
+  if (t.direction && position.headingDeg != null && !Number.isNaN(position.headingDeg)) {
+    const bearing = bearingDeg(position.lat, position.lon, t.lat, t.lon);
+    const diff = bearingDiff(position.headingDeg, bearing);
+    if (t.direction === "arriving" && diff > 90) return false;
+    if (t.direction === "departing" && diff <= 90) return false;
+  }
+
+  return true;
 };
 
 const MATCHERS: Matcher[] = [matchSlkRange, matchGeofence];
