@@ -58,6 +58,8 @@ class AudioPlayerImpl {
   private loadNextClipUrl: (() => Promise<string | null>) | null = null;
   /** Callback fired whenever currentClip changes (for Media Session sync). */
   private onClipChanged: ((clip: Clip | null) => void) | null = null;
+  /** Callback fired when a clip plays to completion (for journey "played" tracking). */
+  private onClipCompleted: ((clip: Clip | null) => void) | null = null;
 
   /** Must be called once after first user interaction (browser autoplay policy). */
   init(): void {
@@ -88,6 +90,11 @@ class AudioPlayerImpl {
       }
     });
     this.audio.addEventListener("ended", () => {
+      // Fire completion callback BEFORE advancing (so the just-finished clip is marked played)
+      const finishedClip = this.state.currentClip;
+      if (finishedClip) {
+        this.onClipCompleted?.(finishedClip);
+      }
       // Auto-play next in queue (full auto-play mode)
       void this.playNext();
     });
@@ -134,6 +141,11 @@ class AudioPlayerImpl {
   /** Set the callback fired whenever currentClip changes. */
   setOnClipChanged(fn: ((clip: Clip | null) => void) | null): void {
     this.onClipChanged = fn;
+  }
+
+  /** Set the callback fired when a clip plays to completion. */
+  setOnClipCompleted(fn: ((clip: Clip | null) => void) | null): void {
+    this.onClipCompleted = fn;
   }
 
   /**

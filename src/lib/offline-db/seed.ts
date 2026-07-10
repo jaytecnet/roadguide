@@ -21,7 +21,7 @@ import type { Road } from "@/lib/types";
  */
 
 const SEED_VERSION_KEY = "seed-version";
-const CURRENT_SEED_VERSION = 3;
+const CURRENT_SEED_VERSION = 4;
 
 export interface SeedResult {
   tripsSeeded: number;

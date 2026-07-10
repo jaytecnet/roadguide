@@ -26,19 +26,21 @@ const M031_TRIP: Trip = {
 };
 
 const M031_CLIPS: Clip[] = [
-  // --- Town clips: SLK-range triggers, increasing direction -----------------
+  // --- Town clips: geofence triggers (300m radius) --------------------------
+  // All town clips use geofence triggers — works regardless of whether the
+  // town sits directly on M031 or on a spur road (Beverley is 17km off M031).
+  // Direction filter is unset — fires when driving through in either direction.
   ...ROADS.M031.towns.map((town, idx): Clip => ({
     id: `clip-m031-${town.name.toLowerCase().replace(/\s+/g, "-")}`,
     tripId: M031_TRIP_ID,
     title: town.name,
-    subtitle: `SLK ${town.slk} · M031`,
+    subtitle: `Town · ${town.lat.toFixed(4)}°, ${town.lon.toFixed(4)}°`,
     script: town.blurb ?? `${town.name} — no script available yet.`,
     trigger: {
-      type: "slk-range",
-      roadId: "M031",
-      slkStart: town.slk,
-      slkEnd: town.slk + 2,
-      direction: "increasing",
+      type: "geofence",
+      lat: town.lat,
+      lon: town.lon,
+      radiusM: 300,
     },
     audioReady: false,
     order: idx,
@@ -48,7 +50,7 @@ const M031_CLIPS: Clip[] = [
     id: `clip-poi-${poi.name.toLowerCase().replace(/\s+/g, "-")}`,
     tripId: M031_TRIP_ID,
     title: poi.name,
-    subtitle: `Geofence · ${poi.radiusM} m radius`,
+    subtitle: `POI · ${poi.radiusM} m radius`,
     script: poi.blurb,
     trigger: {
       type: "geofence",

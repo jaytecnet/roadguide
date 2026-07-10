@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin, ListMusic, SlidersHorizontal, Settings as SettingsIcon } from "lucide-react";
+import { MapPin, ListMusic, Navigation, Settings as SettingsIcon } from "lucide-react";
 import { useUiStore, type Tab } from "@/store/ui-store";
 import { useTripStore } from "@/store/trip-store";
 import { usePlayerStore, bindPlayerToStore } from "@/store/player-store";
 import { NowPlaying } from "./now-playing";
 import { TripSwitcher } from "./trip-switcher";
-import { TestMode } from "./test-mode";
+import { Drive } from "./drive";
 import { Settings } from "./settings";
 import { audioPlayer } from "@/lib/audio/player";
 import { setPlaybackState } from "@/lib/audio/media-session";
@@ -17,17 +17,19 @@ import { cn } from "@/lib/utils";
 const TABS: Array<{ id: Tab; label: string; icon: typeof MapPin }> = [
   { id: "now-playing", label: "Playing", icon: MapPin },
   { id: "trips", label: "Trips", icon: ListMusic },
-  { id: "test-mode", label: "Test", icon: SlidersHorizontal },
+  { id: "drive", label: "Drive", icon: Navigation },
   { id: "settings", label: "Settings", icon: SettingsIcon },
 ];
 
 export function AppShell() {
   const activeTab = useUiStore((s) => s.activeTab);
   const setActiveTab = useUiStore((s) => s.setActiveTab);
+  const driveMode = useUiStore((s) => s.driveMode);
   const loadTrips = useTripStore((s) => s.loadTrips);
   const initMedia = useTripStore((s) => s.initMedia);
   const trips = useTripStore((s) => s.trips);
   const activeTripId = useTripStore((s) => s.activeTripId);
+  const journey = useTripStore((s) => s.journey);
   const currentClip = usePlayerStore((s) => s.currentClip);
   const isPlaying = usePlayerStore((s) => s.isPlaying);
   const [seedStatus, setSeedStatus] = useState<string | null>(null);
@@ -40,11 +42,14 @@ export function AppShell() {
       try {
         setSeedStatus("Seeding database...");
         const result = await seedIfNeeded();
+        const parts: string[] = [];
+        if (result.audioDownloaded > 0) parts.push(`${result.audioDownloaded} audio`);
+        if (result.roadsGeometriesLoaded > 0) parts.push(`${result.roadsGeometriesLoaded} roads`);
         setSeedStatus(
-          result.audioDownloaded > 0
-            ? `Downloaded ${result.audioDownloaded} audio clips`
+          parts.length > 0
+            ? `Loaded ${parts.join(" + ")}`
             : result.audioSkipped > 0
-              ? `${result.audioSkipped} clips already cached`
+              ? `${result.audioSkipped} clips cached`
               : null,
         );
         await loadTrips();
@@ -87,6 +92,8 @@ export function AppShell() {
     setPlaybackState(isPlaying ? "playing" : "paused");
   }, [isPlaying, mediaSessionReady]);
 
+  const playedCount = journey?.playedClipIds.length ?? 0;
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Top header */}
@@ -103,11 +110,26 @@ export function AppShell() {
               </div>
             </div>
           </div>
-          {seedStatus && (
-            <div className="text-[11px] text-muted-foreground truncate max-w-[40%] text-right">
-              {seedStatus}
-            </div>
-          )}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {journey && (
+              <div className="text-[11px] text-muted-foreground text-right">
+                <div className="font-mono">{playedCount} played</div>
+                <div className="text-[10px] opacity-70">this journey</div>
+              </div>
+            )}
+            {seedStatus && !journey && (
+              <div className="text-[11px] text-muted-foreground truncate max-w-[40%] text-right">
+                {seedStatus}
+              </div>
+            )}
+            {/* Drive mode indicator */}
+            {driveMode === "live" && (
+              <span className="flex items-center gap-1 text-[10px] font-mono text-primary bg-primary/10 px-2 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                LIVE
+              </span>
+            )}
+          </div>
         </div>
       </header>
 
@@ -115,7 +137,7 @@ export function AppShell() {
       <main className="flex-1 overflow-y-auto pb-32 scroll-area-thin">
         {activeTab === "now-playing" && <NowPlaying />}
         {activeTab === "trips" && <TripSwitcher />}
-        {activeTab === "test-mode" && <TestMode />}
+        {activeTab === "drive" && <Drive />}
         {activeTab === "settings" && <Settings />}
       </main>
 

@@ -24,9 +24,9 @@
       "url": "/?tab=now-playing"
     },
     {
-      "name": "Test Mode",
-      "short_name": "Test",
-      "url": "/?tab=test-mode"
+      "name": "Drive",
+      "short_name": "Drive",
+      "url": "/?tab=drive"
     },
     {
       "name": "Trips",
