@@ -17,10 +17,10 @@ interface PlayerStore extends PlayerState {
   togglePlay: () => void;
   /** Skip to next clip in queue. */
   playNext: () => Promise<void>;
-  /** Skip forward 15s. */
-  skipForward: () => void;
-  /** Skip backward 15s. */
-  skipBackward: () => void;
+  /** Skip forward N seconds (default 15). */
+  skipForward: (sec?: number) => void;
+  /** Skip backward N seconds (default 15). */
+  skipBackward: (sec?: number) => void;
   /** Seek to position. */
   seek: (sec: number) => void;
   /** Toggle mute. */
@@ -48,8 +48,8 @@ export const usePlayerStore = create<PlayerStore>((set) => ({
   playNext: async () => {
     await audioPlayer.playNext();
   },
-  skipForward: () => audioPlayer.skipForward(15),
-  skipBackward: () => audioPlayer.skipBackward(15),
+  skipForward: (sec?: number) => audioPlayer.skipForward(sec ?? 15),
+  skipBackward: (sec?: number) => audioPlayer.skipBackward(sec ?? 15),
   seek: (sec) => audioPlayer.seek(sec),
   toggleMute: () => audioPlayer.setMuted(!audioPlayer.getState().isMuted),
 }));

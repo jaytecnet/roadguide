@@ -14,8 +14,9 @@ export default function Home() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const params = new URLSearchParams(window.location.search);
-    let tab = params.get("tab") as Tab | null;
-    if (tab === "test-mode") tab = "drive";
+    const rawTab = params.get("tab");
+    // Migrate legacy tab name
+    const tab = (rawTab === "test-mode" ? "drive" : rawTab) as Tab | null;
     if (tab && VALID_TABS.includes(tab)) {
       setActiveTab(tab);
       window.history.replaceState({}, "", "/");

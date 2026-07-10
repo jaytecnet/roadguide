@@ -77,8 +77,9 @@ export async function seedIfNeeded(force = false): Promise<SeedResult> {
           slkEnd: f.properties.slkEnd,
           cwy: f.properties.cwy,
           commonName: f.properties.commonName,
-          // Convert [lon, lat] pairs to [lat, lon] for our internal convention
-          points: f.geometry.coordinates.flat().map(([lon, lat]: [number, number]) => [lat, lon] as [number, number]),
+          // Convert [lon, lat] pairs to [lat, lon] for our internal convention.
+          // GeoJSON coordinates are number[][] so we cast after validating length.
+          points: f.geometry.coordinates.flat().map((pt: number[]) => [pt[1], pt[0]] as [number, number]),
         }),
       );
       const roadWithGeometry: Road = {

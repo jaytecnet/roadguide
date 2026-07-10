@@ -254,9 +254,9 @@ class AudioPlayerImpl {
     }
 
     // Use preloaded URL if available
-    let url = this.nextClipUrl;
+    let url: string | null = this.nextClipUrl;
     if (!url) {
-      url = await this.loadNextClipUrl?.();
+      url = (await this.loadNextClipUrl?.()) ?? null;
     }
     if (!url) {
       this.patch({ error: `No audio available for "${next.title}"` });
