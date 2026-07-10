@@ -12,6 +12,7 @@ import { Settings } from "./settings";
 import { audioPlayer } from "@/lib/audio/player";
 import { setPlaybackState } from "@/lib/audio/media-session";
 import { seedIfNeeded } from "@/lib/offline-db";
+import { APP_VERSION_DISPLAY } from "@/lib/version";
 import { cn } from "@/lib/utils";
 
 const TABS: Array<{ id: Tab; label: string; icon: typeof MapPin }> = [
@@ -102,8 +103,11 @@ export function AppShell() {
           <div className="flex items-center gap-2 min-w-0">
             <img src="/icon-96.png" alt="" className="w-7 h-7 rounded-md flex-shrink-0" />
             <div className="min-w-0">
-              <div className="text-sm font-semibold leading-tight truncate">
-                Wheatbelt Audio
+              <div className="text-sm font-semibold leading-tight truncate flex items-center gap-1.5">
+                <span className="truncate">Wheatbelt Audio</span>
+                <span className="text-[9px] font-mono text-muted-foreground/70 bg-muted/50 px-1 py-0.5 rounded flex-shrink-0">
+                  {APP_VERSION_DISPLAY}
+                </span>
               </div>
               <div className="text-[11px] text-muted-foreground leading-tight truncate">
                 {activeTrip ? activeTrip.name : "No trip active"}

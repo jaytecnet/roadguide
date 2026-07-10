@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Database, RefreshCw, Trash2, Info, Github } from "lucide-react";
+import { Database, RefreshCw, Trash2, Info, Github, GitCommit } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import {
   totalAudioSize,
@@ -14,6 +15,7 @@ import {
   seedIfNeeded,
 } from "@/lib/offline-db";
 import { useTripStore } from "@/store/trip-store";
+import { APP_VERSION, APP_VERSION_DISPLAY, BUILD_DATE } from "@/lib/version";
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -141,6 +143,27 @@ export function Settings() {
         </div>
       </Card>
 
+      {/* Version — prominent so you can confirm you're on the latest build */}
+      <Card className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <GitCommit className="w-4 h-4 text-primary" />
+            <h3 className="text-sm font-semibold">Version</h3>
+          </div>
+          <Badge variant="default" className="text-xs font-mono">
+            {APP_VERSION_DISPLAY}
+          </Badge>
+        </div>
+        <div className="mt-3 text-[11px] text-muted-foreground font-mono space-y-0.5">
+          <div>app: {APP_VERSION}</div>
+          <div>built: {BUILD_DATE}</div>
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          If the version here doesn&apos;t match what you expect after a deploy,
+          clear the app cache or reinstall the PWA to force an update.
+        </p>
+      </Card>
+
       {/* About */}
       <Card className="p-4 space-y-3">
         <div className="flex items-center gap-2">
@@ -150,7 +173,7 @@ export function Settings() {
         <div className="text-xs space-y-2 text-muted-foreground leading-relaxed">
           <p>
             <span className="text-foreground font-medium">Wheatbelt Audio Companion</span>{" "}
-            · v0.1.0 (MVP)
+            · {APP_VERSION_DISPLAY} · Phase 3 (GPS + EKF + geofence-primary)
           </p>
           <p>
             Location-triggered audio commentary for Western Australian Wheatbelt
@@ -158,8 +181,8 @@ export function Settings() {
             downloaded.
           </p>
           <p>
-            Road data: MRWA ArcGIS Layer 17 (Phase 3) · Audio: z-ai TTS ·
-            Storage: IndexedDB
+            Road data: MRWA ArcGIS Layer 17 · Audio: z-ai TTS ·
+            Storage: IndexedDB · GPS: EKF-smoothed
           </p>
         </div>
       </Card>
