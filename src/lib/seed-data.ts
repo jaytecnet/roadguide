@@ -17,7 +17,7 @@ const M031_TRIP_ID = "trip-m031-york-to-katanning";
 const M031_TRIP: Trip = {
   id: M031_TRIP_ID,
   name: "Great Southern Hwy — York to Katanning",
-  description: "M031 corridor · ~200 km · 7 towns + 2 off-road POIs",
+  description: "M031 corridor · ~270 km · 7 towns + 2 off-road POIs",
   roadIds: ["M031"],
   accent: "#d97706",
   // Set explicitly so this sorts first (newer) in getAllTrips which orders by updatedAt desc

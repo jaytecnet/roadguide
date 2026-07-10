@@ -1,0 +1,1270 @@
+{
+  "type": "FeatureCollection",
+  "roadId": "M010",
+  "roadName": "Chidlow York Rd",
+  "commonName": "Great Southern Hwy",
+  "slkRange": {
+    "start": 0,
+    "end": 46.02
+  },
+  "segmentCount": 21,
+  "carriageways": {
+    "Single": 21
+  },
+  "fetchedAt": "2026-07-10T00:35:35.389Z",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.3199,
+              -31.87441
+            ],
+            [
+              116.32072,
+              -31.87467
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 0,
+        "slkEnd": 0.08,
+        "cwy": "Single",
+        "trueDistStart": 0,
+        "trueDistEnd": 0.08,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.32072,
+              -31.87467
+            ],
+            [
+              116.32241,
+              -31.87519
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 0.08,
+        "slkEnd": 0.24,
+        "cwy": "Single",
+        "trueDistStart": 0.08,
+        "trueDistEnd": 0.24,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.32241,
+              -31.87519
+            ],
+            [
+              116.32305,
+              -31.87529
+            ],
+            [
+              116.32426,
+              -31.87528
+            ],
+            [
+              116.32493,
+              -31.87537
+            ],
+            [
+              116.32577,
+              -31.87568
+            ],
+            [
+              116.32758,
+              -31.87665
+            ],
+            [
+              116.32891,
+              -31.87696
+            ],
+            [
+              116.32974,
+              -31.87706
+            ],
+            [
+              116.33328,
+              -31.87681
+            ],
+            [
+              116.33762,
+              -31.87548
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 0.24,
+        "slkEnd": 1.75,
+        "cwy": "Single",
+        "trueDistStart": 0.24,
+        "trueDistEnd": 1.75,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.33762,
+              -31.87548
+            ],
+            [
+              116.34208,
+              -31.87465
+            ],
+            [
+              116.34633,
+              -31.87518
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 1.75,
+        "slkEnd": 2.57,
+        "cwy": "Single",
+        "trueDistStart": 1.75,
+        "trueDistEnd": 2.57,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.34633,
+              -31.87518
+            ],
+            [
+              116.38256,
+              -31.87994
+            ],
+            [
+              116.38425,
+              -31.87987
+            ],
+            [
+              116.38531,
+              -31.87955
+            ],
+            [
+              116.38596,
+              -31.87913
+            ],
+            [
+              116.38734,
+              -31.87778
+            ],
+            [
+              116.38787,
+              -31.8774
+            ],
+            [
+              116.38982,
+              -31.87626
+            ],
+            [
+              116.39152,
+              -31.87559
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 2.57,
+        "slkEnd": 7.07,
+        "cwy": "Single",
+        "trueDistStart": 2.57,
+        "trueDistEnd": 7.07,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.39152,
+              -31.87559
+            ],
+            [
+              116.39269,
+              -31.87518
+            ],
+            [
+              116.39358,
+              -31.87506
+            ],
+            [
+              116.39686,
+              -31.87523
+            ],
+            [
+              116.39935,
+              -31.8751
+            ],
+            [
+              116.40314,
+              -31.87512
+            ],
+            [
+              116.40625,
+              -31.87551
+            ],
+            [
+              116.40875,
+              -31.87554
+            ],
+            [
+              116.41084,
+              -31.87543
+            ],
+            [
+              116.42153,
+              -31.87618
+            ],
+            [
+              116.42331,
+              -31.87647
+            ],
+            [
+              116.42595,
+              -31.87715
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 7.07,
+        "slkEnd": 10.36,
+        "cwy": "Single",
+        "trueDistStart": 7.07,
+        "trueDistEnd": 10.36,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.42595,
+              -31.87715
+            ],
+            [
+              116.4291,
+              -31.87804
+            ],
+            [
+              116.43645,
+              -31.88094
+            ],
+            [
+              116.43791,
+              -31.88136
+            ],
+            [
+              116.439,
+              -31.88158
+            ],
+            [
+              116.44117,
+              -31.88182
+            ],
+            [
+              116.45293,
+              -31.88224
+            ],
+            [
+              116.45391,
+              -31.8822
+            ],
+            [
+              116.45593,
+              -31.88191
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 10.36,
+        "slkEnd": 13.51,
+        "cwy": "Single",
+        "trueDistStart": 10.36,
+        "trueDistEnd": 13.51,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.45593,
+              -31.88191
+            ],
+            [
+              116.45678,
+              -31.8819
+            ],
+            [
+              116.46089,
+              -31.88244
+            ],
+            [
+              116.46727,
+              -31.88302
+            ],
+            [
+              116.46856,
+              -31.88295
+            ],
+            [
+              116.47187,
+              -31.88236
+            ],
+            [
+              116.4727,
+              -31.88229
+            ],
+            [
+              116.47361,
+              -31.88236
+            ],
+            [
+              116.47542,
+              -31.88278
+            ],
+            [
+              116.4776,
+              -31.88285
+            ],
+            [
+              116.48212,
+              -31.88246
+            ],
+            [
+              116.48277,
+              -31.88223
+            ],
+            [
+              116.48496,
+              -31.88108
+            ],
+            [
+              116.48831,
+              -31.88031
+            ],
+            [
+              116.49105,
+              -31.88018
+            ],
+            [
+              116.49377,
+              -31.87994
+            ],
+            [
+              116.49885,
+              -31.88007
+            ],
+            [
+              116.50576,
+              -31.88101
+            ],
+            [
+              116.50679,
+              -31.88125
+            ],
+            [
+              116.50805,
+              -31.8817
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 13.51,
+        "slkEnd": 18.56,
+        "cwy": "Single",
+        "trueDistStart": 13.51,
+        "trueDistEnd": 18.56,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.50805,
+              -31.8817
+            ],
+            [
+              116.51232,
+              -31.88325
+            ],
+            [
+              116.51437,
+              -31.88341
+            ],
+            [
+              116.51753,
+              -31.88383
+            ],
+            [
+              116.52162,
+              -31.88516
+            ],
+            [
+              116.52247,
+              -31.88537
+            ],
+            [
+              116.5297,
+              -31.88599
+            ],
+            [
+              116.53255,
+              -31.887
+            ],
+            [
+              116.53413,
+              -31.88722
+            ],
+            [
+              116.53516,
+              -31.88714
+            ],
+            [
+              116.5361,
+              -31.88679
+            ],
+            [
+              116.5392,
+              -31.88445
+            ],
+            [
+              116.54021,
+              -31.8839
+            ],
+            [
+              116.54105,
+              -31.88367
+            ],
+            [
+              116.54463,
+              -31.88317
+            ],
+            [
+              116.54559,
+              -31.88317
+            ],
+            [
+              116.54669,
+              -31.88335
+            ],
+            [
+              116.5492,
+              -31.88429
+            ],
+            [
+              116.55261,
+              -31.88536
+            ],
+            [
+              116.55346,
+              -31.88558
+            ],
+            [
+              116.55413,
+              -31.88562
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 18.56,
+        "slkEnd": 23.24,
+        "cwy": "Single",
+        "trueDistStart": 18.56,
+        "trueDistEnd": 23.24,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.55413,
+              -31.88562
+            ],
+            [
+              116.55531,
+              -31.8856
+            ],
+            [
+              116.55644,
+              -31.88573
+            ],
+            [
+              116.55972,
+              -31.88664
+            ],
+            [
+              116.56077,
+              -31.88713
+            ],
+            [
+              116.56208,
+              -31.88808
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 23.24,
+        "slkEnd": 24.07,
+        "cwy": "Single",
+        "trueDistStart": 23.24,
+        "trueDistEnd": 24.07,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.56208,
+              -31.88808
+            ],
+            [
+              116.56394,
+              -31.88968
+            ],
+            [
+              116.56466,
+              -31.8901
+            ],
+            [
+              116.56856,
+              -31.89102
+            ],
+            [
+              116.57087,
+              -31.89182
+            ],
+            [
+              116.57173,
+              -31.89204
+            ],
+            [
+              116.57332,
+              -31.89225
+            ],
+            [
+              116.58139,
+              -31.89239
+            ],
+            [
+              116.58363,
+              -31.89235
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 24.07,
+        "slkEnd": 26.24,
+        "cwy": "Single",
+        "trueDistStart": 24.07,
+        "trueDistEnd": 26.24,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.58363,
+              -31.89235
+            ],
+            [
+              116.58499,
+              -31.89213
+            ],
+            [
+              116.58629,
+              -31.89175
+            ],
+            [
+              116.59387,
+              -31.88852
+            ],
+            [
+              116.59472,
+              -31.88834
+            ],
+            [
+              116.59649,
+              -31.88834
+            ],
+            [
+              116.59718,
+              -31.88825
+            ],
+            [
+              116.5979,
+              -31.88803
+            ],
+            [
+              116.59988,
+              -31.88711
+            ],
+            [
+              116.6005,
+              -31.88699
+            ],
+            [
+              116.60142,
+              -31.88694
+            ],
+            [
+              116.6073,
+              -31.88777
+            ],
+            [
+              116.60866,
+              -31.8881
+            ],
+            [
+              116.61593,
+              -31.89037
+            ],
+            [
+              116.61654,
+              -31.8907
+            ],
+            [
+              116.61811,
+              -31.89179
+            ],
+            [
+              116.61926,
+              -31.89228
+            ],
+            [
+              116.62112,
+              -31.89282
+            ],
+            [
+              116.6259,
+              -31.89401
+            ],
+            [
+              116.62718,
+              -31.89416
+            ],
+            [
+              116.63576,
+              -31.89478
+            ],
+            [
+              116.63857,
+              -31.89511
+            ],
+            [
+              116.64133,
+              -31.89562
+            ],
+            [
+              116.64615,
+              -31.89736
+            ],
+            [
+              116.6489,
+              -31.8988
+            ],
+            [
+              116.65142,
+              -31.89954
+            ],
+            [
+              116.65215,
+              -31.89983
+            ],
+            [
+              116.65316,
+              -31.9005
+            ],
+            [
+              116.65514,
+              -31.90238
+            ],
+            [
+              116.65677,
+              -31.90347
+            ],
+            [
+              116.66159,
+              -31.90551
+            ],
+            [
+              116.66293,
+              -31.9063
+            ],
+            [
+              116.66356,
+              -31.90681
+            ],
+            [
+              116.66415,
+              -31.90747
+            ],
+            [
+              116.66463,
+              -31.90842
+            ],
+            [
+              116.66518,
+              -31.91019
+            ],
+            [
+              116.66539,
+              -31.91065
+            ],
+            [
+              116.66676,
+              -31.91247
+            ],
+            [
+              116.66747,
+              -31.91323
+            ],
+            [
+              116.66873,
+              -31.91419
+            ],
+            [
+              116.66964,
+              -31.91469
+            ],
+            [
+              116.6707,
+              -31.9151
+            ],
+            [
+              116.67194,
+              -31.91542
+            ],
+            [
+              116.67366,
+              -31.91558
+            ],
+            [
+              116.67568,
+              -31.91538
+            ],
+            [
+              116.68818,
+              -31.91255
+            ],
+            [
+              116.69066,
+              -31.91211
+            ],
+            [
+              116.69517,
+              -31.91181
+            ],
+            [
+              116.6992,
+              -31.91175
+            ],
+            [
+              116.70145,
+              -31.91155
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 26.24,
+        "slkEnd": 38.66,
+        "cwy": "Single",
+        "trueDistStart": 26.24,
+        "trueDistEnd": 38.66,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.70145,
+              -31.91155
+            ],
+            [
+              116.70444,
+              -31.91131
+            ],
+            [
+              116.70773,
+              -31.91118
+            ],
+            [
+              116.71036,
+              -31.9109
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 38.66,
+        "slkEnd": 39.52,
+        "cwy": "Single",
+        "trueDistStart": 38.66,
+        "trueDistEnd": 39.52,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.71036,
+              -31.9109
+            ],
+            [
+              116.71174,
+              -31.91067
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 39.52,
+        "slkEnd": 39.66,
+        "cwy": "Single",
+        "trueDistStart": 39.52,
+        "trueDistEnd": 39.66,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.71174,
+              -31.91067
+            ],
+            [
+              116.71636,
+              -31.91028
+            ],
+            [
+              116.71959,
+              -31.9104
+            ],
+            [
+              116.72115,
+              -31.91067
+            ],
+            [
+              116.72375,
+              -31.91144
+            ],
+            [
+              116.72504,
+              -31.91158
+            ],
+            [
+              116.7261,
+              -31.91154
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 39.66,
+        "slkEnd": 41.05,
+        "cwy": "Single",
+        "trueDistStart": 39.66,
+        "trueDistEnd": 41.05,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.7261,
+              -31.91154
+            ],
+            [
+              116.72706,
+              -31.91142
+            ],
+            [
+              116.728,
+              -31.91118
+            ],
+            [
+              116.73124,
+              -31.90994
+            ],
+            [
+              116.73228,
+              -31.90941
+            ],
+            [
+              116.73321,
+              -31.90864
+            ],
+            [
+              116.73386,
+              -31.90777
+            ],
+            [
+              116.73425,
+              -31.90677
+            ],
+            [
+              116.73433,
+              -31.9059
+            ],
+            [
+              116.73417,
+              -31.90415
+            ],
+            [
+              116.73442,
+              -31.90301
+            ],
+            [
+              116.73471,
+              -31.90241
+            ],
+            [
+              116.73513,
+              -31.90183
+            ],
+            [
+              116.73615,
+              -31.90093
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 41.05,
+        "slkEnd": 42.76,
+        "cwy": "Single",
+        "trueDistStart": 41.05,
+        "trueDistEnd": 42.76,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.73615,
+              -31.90093
+            ],
+            [
+              116.73743,
+              -31.90024
+            ],
+            [
+              116.74025,
+              -31.89891
+            ],
+            [
+              116.74156,
+              -31.89856
+            ],
+            [
+              116.74457,
+              -31.89808
+            ],
+            [
+              116.74566,
+              -31.89783
+            ],
+            [
+              116.74671,
+              -31.89745
+            ],
+            [
+              116.74921,
+              -31.89634
+            ],
+            [
+              116.75043,
+              -31.89596
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 42.76,
+        "slkEnd": 44.23,
+        "cwy": "Single",
+        "trueDistStart": 42.76,
+        "trueDistEnd": 44.23,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.75043,
+              -31.89596
+            ],
+            [
+              116.75191,
+              -31.89572
+            ],
+            [
+              116.75344,
+              -31.89571
+            ],
+            [
+              116.75456,
+              -31.89585
+            ],
+            [
+              116.75769,
+              -31.89651
+            ],
+            [
+              116.75914,
+              -31.89662
+            ],
+            [
+              116.76106,
+              -31.89643
+            ],
+            [
+              116.76283,
+              -31.8959
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Great Southern Hwy",
+        "slkStart": 44.23,
+        "slkEnd": 45.45,
+        "cwy": "Single",
+        "trueDistStart": 44.23,
+        "trueDistEnd": 45.45,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.76283,
+              -31.8959
+            ],
+            [
+              116.76492,
+              -31.89499
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Henrietta St",
+        "slkStart": 45.45,
+        "slkEnd": 45.67,
+        "cwy": "Single",
+        "trueDistStart": 45.45,
+        "trueDistEnd": 45.67,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.76492,
+              -31.89499
+            ],
+            [
+              116.76626,
+              -31.8944
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Henrietta St",
+        "slkStart": 45.67,
+        "slkEnd": 45.81,
+        "cwy": "Single",
+        "trueDistStart": 45.67,
+        "trueDistEnd": 45.81,
+        "networkType": "State Road"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              116.76626,
+              -31.8944
+            ],
+            [
+              116.76822,
+              -31.89354
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "roadId": "M010",
+        "roadName": "Chidlow York Rd",
+        "commonName": "Henrietta St",
+        "slkStart": 45.81,
+        "slkEnd": 46.02,
+        "cwy": "Single",
+        "trueDistStart": 45.81,
+        "trueDistEnd": 46.02,
+        "networkType": "State Road"
+      }
+    }
+  ]
+}

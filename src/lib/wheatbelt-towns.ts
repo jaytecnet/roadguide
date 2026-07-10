@@ -16,9 +16,16 @@ import type { Road, RoadId, TownMarker } from "./types";
 
 // --- Great Southern Hwy (M031) — York to Katanning corridor -----------------
 
+/*
+ * SLK positions calibrated against MRWA Layer 17 M031 geometry via
+ * scripts/calibrate-town-slks.ts. Beverley sits ~17 km west of M031
+ * (it's on a spur road) so its SLK is the nearest point on M031 —
+ * the user's real route may not actually pass through Beverley on M031.
+ * Re-calibrate when the user provides their actual route.
+ */
 const M031_TOWNS: TownMarker[] = [
   {
-    slk: 0,
+    slk: 35.66,
     name: "York",
     lat: -31.8977,
     lon: 116.7664,
@@ -26,15 +33,15 @@ const M031_TOWNS: TownMarker[] = [
       "Inland's first town (1831). Settled before Perth was anything more than a riverbank camp, York became the staging point for every Eastern Districts expedition. The motor museum now occupies the old motor garage on Avon Terrace — look for the pressed-tin ceiling.",
   },
   {
-    slk: 22,
+    slk: 51.04,
     name: "Beverley",
     lat: -32.1089,
     lon: 116.6426,
     blurb:
-      "Avon River crossing. The Beverly Soaring Society is one of the oldest gliding clubs in Australia — if you see circling sailplanes on a summer afternoon, that's them riding thermals off the bare paddocks.",
+      "Avon River crossing. The Beverley Soaring Society is one of the oldest gliding clubs in Australia — if you see circling sailplanes on a summer afternoon, that's them riding thermals off the bare paddocks.",
   },
   {
-    slk: 56,
+    slk: 97.51,
     name: "Brookton",
     lat: -32.3672,
     lon: 117.0036,
@@ -42,7 +49,7 @@ const M031_TOWNS: TownMarker[] = [
       "Junction with Brookton Highway, the back route into Perth. The Old Police Station museum is open by appointment — ask at the shire office if you want a look through.",
   },
   {
-    slk: 86,
+    slk: 117.7,
     name: "Pingelly",
     lat: -32.5319,
     lon: 117.0839,
@@ -50,7 +57,7 @@ const M031_TOWNS: TownMarker[] = [
       "Wheatbelt sheep country. The Pingelly Recreation and Cultural Centre hosts the annual Pingelly Astrofest — some of the darkest skies in the southwest, only two hours from Perth.",
   },
   {
-    slk: 110,
+    slk: 167.41,
     name: "Narrogin",
     lat: -32.9306,
     lon: 117.1783,
@@ -58,7 +65,7 @@ const M031_TOWNS: TownMarker[] = [
       "Regional crossroads. Narrogin was the railhead for the Great Southern line and still has the operational grain pools. Dryandra Forest nearby is one of the last strongholds of the numbat.",
   },
   {
-    slk: 144,
+    slk: 216.31,
     name: "Wagin",
     lat: -33.3104,
     lon: 117.3431,
@@ -66,7 +73,7 @@ const M031_TOWNS: TownMarker[] = [
       "Home of the Giant Ram — a 7-metre fibreglass merino built in 1985. The Wagin Woolorama, held every March, is one of the biggest sheep shows in WA.",
   },
   {
-    slk: 188,
+    slk: 269.83,
     name: "Katanning",
     lat: -33.6897,
     lon: 117.5525,
@@ -112,12 +119,12 @@ const M031_OFFROAD_POIS: Array<{
 export const ROADS: Record<RoadId, Road> = {
   M031: {
     id: "M031",
-    name: "Great Southern Highway",
-    lengthKm: 200,
+    name: "Great Southern Highway (Peel Terrace / Northam-York Rd corridor)",
+    lengthKm: 352.23,
     slkStart: 0,
-    slkEnd: 200,
+    slkEnd: 352.23,
     towns: M031_TOWNS,
-    // Phase 3: populate geometry from MRWA Layer 17
+    // Phase 3: geometry loaded from /public/roads/M031.json into IndexedDB on first run
   },
 };
 
