@@ -16,7 +16,7 @@
  *   - MRWA ArcGIS requests (Phase 3 will add a separate cache for road geometry)
  */
 
-const VERSION = "v1.0.0";
+const VERSION = "v0.2.1";
 const APP_SHELL_CACHE = `wheatbelt-shell-${VERSION}`;
 const RUNTIME_CACHE = `wheatbelt-runtime-${VERSION}`;
 
@@ -44,7 +44,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activate — clean up old caches
+// Activate — clean up old caches + notify clients to reload
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
@@ -56,7 +56,16 @@ self.addEventListener("activate", (event) => {
             .map((key) => caches.delete(key)),
         ),
       )
-      .then(() => self.clients.claim()),
+      .then(() => self.clients.claim())
+      .then(() => {
+        // Notify all open clients that a new SW has activated — they should reload
+        return self.clients.matchAll({ type: "window" });
+      })
+      .then((clients) => {
+        clients.forEach((client) => {
+          client.postMessage({ type: "SW_ACTIVATED", version: VERSION });
+        });
+      }),
   );
 });
 
