@@ -10,7 +10,7 @@
  * Format: semantic version (MAJOR.MINOR.PATCH).
  */
 
-export const APP_VERSION = "0.3.0";
+export const APP_VERSION = "0.4.0";
 
 /** Full version string for display. */
 export const APP_VERSION_DISPLAY = `v${APP_VERSION}`;

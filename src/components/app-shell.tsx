@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin, ListMusic, Navigation, Settings as SettingsIcon } from "lucide-react";
+import { MapPin, ListMusic, Navigation, Edit3, Settings as SettingsIcon } from "lucide-react";
 import { useUiStore, type Tab } from "@/store/ui-store";
 import { useTripStore } from "@/store/trip-store";
 import { usePlayerStore, bindPlayerToStore } from "@/store/player-store";
 import { NowPlaying } from "./now-playing";
 import { TripSwitcher } from "./trip-switcher";
 import { Drive } from "./drive";
+import { ClipsEditor } from "./clips-editor";
 import { Settings } from "./settings";
 import { audioPlayer } from "@/lib/audio/player";
 import { setPlaybackState } from "@/lib/audio/media-session";
@@ -19,6 +20,7 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof MapPin }> = [
   { id: "now-playing", label: "Playing", icon: MapPin },
   { id: "trips", label: "Trips", icon: ListMusic },
   { id: "drive", label: "Drive", icon: Navigation },
+  { id: "clips", label: "Clips", icon: Edit3 },
   { id: "settings", label: "Settings", icon: SettingsIcon },
 ];
 
@@ -142,6 +144,7 @@ export function AppShell() {
         {activeTab === "now-playing" && <NowPlaying />}
         {activeTab === "trips" && <TripSwitcher />}
         {activeTab === "drive" && <Drive />}
+        {activeTab === "clips" && <ClipsEditor />}
         {activeTab === "settings" && <Settings />}
       </main>
 
@@ -171,7 +174,7 @@ export function AppShell() {
       {/* Bottom navigation */}
       <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div
-          className="grid grid-cols-4 gap-1 px-2"
+          className="grid grid-cols-5 gap-1 px-2"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           {TABS.map((tab) => {

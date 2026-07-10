@@ -5,7 +5,7 @@ import { create } from "zustand";
  * Persisted to localStorage so the app reopens on the same tab.
  */
 
-export type Tab = "now-playing" | "trips" | "drive" | "settings";
+export type Tab = "now-playing" | "trips" | "drive" | "clips" | "settings";
 
 /**
  * Drive mode — determines the position source for trigger evaluation.

@@ -7,6 +7,12 @@ import {
   getAllTrips,
 } from "@/lib/offline-db";
 import { createAudioUrl, hasAudio } from "@/lib/offline-db";
+import {
+  deleteClip as dbDeleteClip,
+  createClip as dbCreateClip,
+  markClipAudioNotReady,
+} from "@/lib/offline-db/clips";
+import { deleteAudio } from "@/lib/offline-db/audio";
 import { audioPlayer } from "@/lib/audio/player";
 import {
   initMediaSession,
@@ -76,6 +82,16 @@ interface TripStore {
   startNewJourney: () => void;
   /** Restore journey from localStorage on app mount. */
   restoreJourney: () => void;
+  /** Reload clips for the active trip from IndexedDB (after edits). */
+  reloadClips: () => Promise<void>;
+  /** Create a new clip in the active trip. Returns the created clip. */
+  createClip: (partial: Partial<Clip>) => Promise<Clip | null>;
+  /** Save edits to an existing clip. */
+  saveClip: (clip: Clip) => Promise<void>;
+  /** Delete a clip + its audio. */
+  deleteClip: (clipId: string) => Promise<void>;
+  /** Delete audio for a clip (keeps the clip metadata). */
+  deleteClipAudio: (clipId: string) => Promise<void>;
 }
 
 export const useTripStore = create<TripStore>((set, get) => ({
@@ -304,6 +320,68 @@ export const useTripStore = create<TripStore>((set, get) => ({
     } catch {
       // Corrupt storage — ignore
     }
+  },
+
+  reloadClips: async () => {
+    const { activeTripId } = get();
+    if (!activeTripId) return;
+    const clips = await getClipsForTrip(activeTripId);
+    set({ clips });
+  },
+
+  createClip: async (partial) => {
+    const { activeTripId } = get();
+    if (!activeTripId) return null;
+    const clip = await dbCreateClip(activeTripId, partial);
+    await get().reloadClips();
+    return clip;
+  },
+
+  saveClip: async (clip) => {
+    const { putClip } = await import("@/lib/offline-db/clips");
+    await putClip(clip);
+    await get().reloadClips();
+  },
+
+  deleteClip: async (clipId) => {
+    // If this clip is currently playing, stop playback
+    const playerState = audioPlayer.getState();
+    if (playerState.currentClip?.id === clipId) {
+      audioPlayer.stop();
+    }
+    // Remove from queue if present
+    const newQueue = playerState.queue.filter((c) => c.id !== clipId);
+    if (newQueue.length !== playerState.queue.length) {
+      audioPlayer.setQueue(newQueue);
+    }
+    // Delete from IndexedDB (clips + audio stores)
+    await dbDeleteClip(clipId);
+    // Remove from matched set + journey played set
+    const matched = new Set(get().matchedClipIds);
+    matched.delete(clipId);
+    const { journey } = get();
+    if (journey && journey.playedClipIds.includes(clipId)) {
+      const updated: JourneyState = {
+        ...journey,
+        playedClipIds: journey.playedClipIds.filter((id) => id !== clipId),
+      };
+      set({ journey: updated, matchedClipIds: matched });
+      persistJourney(updated);
+    } else {
+      set({ matchedClipIds: matched });
+    }
+    await get().reloadClips();
+  },
+
+  deleteClipAudio: async (clipId) => {
+    // If this clip is currently playing, stop playback
+    const playerState = audioPlayer.getState();
+    if (playerState.currentClip?.id === clipId) {
+      audioPlayer.stop();
+    }
+    await deleteAudio(clipId);
+    await markClipAudioNotReady(clipId);
+    await get().reloadClips();
   },
 }));
 

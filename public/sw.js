@@ -16,7 +16,7 @@
  *   - MRWA ArcGIS requests (Phase 3 will add a separate cache for road geometry)
  */
 
-const VERSION = "v0.3.0";
+const VERSION = "v0.4.0";
 const APP_SHELL_CACHE = `wheatbelt-shell-${VERSION}`;
 const RUNTIME_CACHE = `wheatbelt-runtime-${VERSION}`;
 

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { AppShell } from "@/components/app-shell";
 import { useUiStore, type Tab } from "@/store/ui-store";
 
-const VALID_TABS: Tab[] = ["now-playing", "trips", "drive", "settings"];
+const VALID_TABS: Tab[] = ["now-playing", "trips", "drive", "clips", "settings"];
 
 export default function Home() {
   const setActiveTab = useUiStore((s) => s.setActiveTab);
