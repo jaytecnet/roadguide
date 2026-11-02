@@ -14,7 +14,7 @@ A mobile-first PWA that plays location-triggered audio commentary during road tr
 - **Storage**: IndexedDB via `idb` (modular stores — trips, clips, audio blobs, roads, kv)
 - **Audio**: HTML5 `<audio>` + Media Session API (lock-screen controls, background audio)
 - **PWA**: Web manifest + service worker (offline app shell)
-- **TTS**: z-ai-web-dev-sdk (used to pre-generate seed audio)
+- **TTS**: [VoiceStudio](https://github.com/debpalash/VoiceStudio) local voice cloning for the clip editor (z-ai-web-dev-sdk still available as a fallback and for the seed-audio script)
 - **Database**: Prisma + SQLite (available but unused in MVP — all runtime data is in IndexedDB)
 
 ## Domain concepts
@@ -61,6 +61,30 @@ bun run lint
 
 Open http://localhost:3000 in a mobile-emulated browser, or install as a PWA on your phone.
 
+## Voice cloning with VoiceStudio
+
+The clip editor's **Generate TTS** button calls `/api/tts`, which by default
+sends the script to a local [VoiceStudio](https://github.com/debpalash/VoiceStudio)
+backend and speaks it in a cloned voice.
+
+1. Install and open VoiceStudio on the machine that runs `bun run dev`.
+   Its backend listens on `http://localhost:3900`.
+2. In VoiceStudio, go to **Voice → Clone** and save a voice from a 5–15 s clean
+   recording. Note its name.
+3. Copy `.env.example` to `.env.local` and set `VOICESTUDIO_VOICE` to that name.
+4. Restart `bun run dev`, then use **Generate TTS** in the clip editor.
+
+Generation takes roughly 30–60 s per clip on a GTX 1650-class GPU. The audio is
+stored in IndexedDB like any other clip, so playback on the road still needs
+no network and no VoiceStudio.
+
+Set `TTS_PROVIDER=zai` to go back to the z-ai cloud voice.
+
+**Licence note:** VoiceStudio's default OmniVoice model is CC-BY-NC (personal /
+non-commercial use only, including the audio it generates). For a commercial
+release, switch VoiceStudio to an Apache-2.0 engine such as CosyVoice 3 and set
+`VOICESTUDIO_MODEL=cosyvoice`. Only clone voices you have permission to use.
+
 ## Architecture
 
 ```
@@ -98,7 +122,7 @@ src/
 │   ├── page.tsx                    # AppShell mount
 │   ├── globals.css                 # Driving-friendly dark theme
 │   └── api/
-│       └── tts/route.ts            # z-ai SDK TTS endpoint
+│       └── tts/route.ts            # TTS endpoint (VoiceStudio or z-ai)
 scripts/
 ├── generate-icons.ts               # PNG icons from SVG
 └── generate-seed-audio.ts          # TTS seed audio generator
