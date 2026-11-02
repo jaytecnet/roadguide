@@ -181,7 +181,7 @@ export function Settings() {
             downloaded.
           </p>
           <p>
-            Road data: MRWA ArcGIS Layer 17 · Audio: z-ai TTS ·
+            Road data: MRWA ArcGIS Layer 17 · Audio: VoiceStudio (local voice cloning) ·
             Storage: IndexedDB · GPS: EKF-smoothed
           </p>
         </div>

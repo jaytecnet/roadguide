@@ -394,9 +394,9 @@ function ClipEditorForm({
       const response = await fetch("/api/tts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        // Voice comes from the server's TTS provider config (see /api/tts).
         body: JSON.stringify({
           text: script.trim(),
-          voice: "tongtong",
           speed: 1.0,
         }),
       });
